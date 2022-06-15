@@ -1,0 +1,12 @@
+venv/
+db.sqlite3
+README.md
+to_do_project/__pycache__/
+user/__pycache__/
+user/management/__pycache__/
+user/management/commands/__pycache__/
+node_modules
+package-lock.json
+package.json
+frontend/package-lock.json
+        package.json
