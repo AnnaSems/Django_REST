@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'to_do_project',
     'user',
     'rest_framework',
+    'to_do'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'user.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.AdminRenderer',
+    ],
+}
+
+JSON_CAMEL_CASE = {
+    'RENDERER_CLASS': 'rest_framework.renderers.UnicodeJSONRenderer'
+}
