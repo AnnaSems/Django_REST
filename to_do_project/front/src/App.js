@@ -23,7 +23,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       }
     }).then(response => {
-      const users = response.json
+      const users = response.data
       this.setState({ 'users': users })
     }).catch(error => console.log(error))
   }
