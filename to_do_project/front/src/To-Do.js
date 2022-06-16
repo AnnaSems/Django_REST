@@ -12,15 +12,14 @@ const ToDo = ({ dos }) => {
             <td>
                 {dos.user}
             </td>
-            <td>
-                {dos.is_active}
-            </td>
+            {!dos.is_active ? <td>&#10004;</td> : ''}
             <td>
                 {dos.created_date}
             </td>
         </tr >
     )
 }
+
 
 const ToDoList = ({ todo }) => {
     return (
@@ -39,7 +38,7 @@ const ToDoList = ({ todo }) => {
             <th>
                 Дата создания
             </th>
-            {/* {todo.map((dos) => <Project todo={dos} />)} */}
+            {todo.map((dos) => <ToDo dos={dos} />)}
         </table>
     )
 }

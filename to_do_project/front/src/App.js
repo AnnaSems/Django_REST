@@ -19,12 +19,24 @@ class App extends React.Component {
   }
   componentDidMount() {
     axios.get('http://127.0.0.1:8000/api/user/', {
-      headers: {
-        'Content-Type': 'application/json'
-      }
     }).then(response => {
+      console.log(response.data)
       const users = response.data
       this.setState({ 'users': users })
+    }).catch(error => console.log(error));
+
+    axios.get('http://127.0.0.1:8000/api/project/', {
+    }).then(response => {
+      console.log(response.data.results)
+      const projects = response.data.results
+      this.setState({ 'projects': projects })
+    }).catch(error => console.log(error));
+
+    axios.get('http://127.0.0.1:8000/api/TODO/', {
+    }).then(response => {
+      console.log(response.data.results)
+      const todoList = response.data.results
+      this.setState({ 'todoList': todoList })
     }).catch(error => console.log(error))
   }
   render() {
@@ -33,7 +45,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Menu />
           <Switch>
-            <Route exact path="/" component={() => <ProjectsList project={this.state.projects} />} />
+            <Route exact path="/" component={() => <ProjectsList projects={this.state.projects} />} />
             <Route exact path="/to-dos" component={() => <ToDoList todo={this.state.todoList} />} />
             <Route exact path="/users" component={() => <UsersList users={this.state.users} />} />
           </Switch>
