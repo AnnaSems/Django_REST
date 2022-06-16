@@ -1,4 +1,6 @@
 venv/
+user/migrations/
+to_do/migrations/
 db.sqlite3
 README.md
 to_do_project/__pycache__/

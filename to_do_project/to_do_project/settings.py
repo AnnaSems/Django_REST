@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'to_do_project',
     'user',
     'rest_framework',
-    'to_do'
+    'to_do',
+    'django_filters',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -133,9 +135,23 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.AdminRenderer',
+        'rest_framework.renderers.JSONRenderer',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 JSON_CAMEL_CASE = {
