@@ -1,9 +1,8 @@
-.footer{
+.footer {
     padding: 20px 0;
-    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     height: auto;
     border: 1px solid;
- }
+}
