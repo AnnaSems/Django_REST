@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'to_do_project',
     'user',
     'rest_framework',
-    'to_do'
+    'to_do',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,10 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.AdminRenderer',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
 }
 
 JSON_CAMEL_CASE = {
